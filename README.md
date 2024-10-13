@@ -5,6 +5,6 @@ MySQL local server to store player highscores.
 Menu system for intuitive user interaction.
 
 
-Pygame required
+Pygame and MySQL required
 
 Run from main

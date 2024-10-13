@@ -1,14 +1,24 @@
 import mysql.connector
+import configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+configValues = {
+    'host' : config['database']['host'],
+    'user' : config['database']['user'],
+    'password' : config['database']['password'],
+    'database' : config['database']['database']
+}
 
 class LeaderBoardDataBase():
     def __init__(self):
         super().__init__()
         try:
             self.mydb = mysql.connector.connect(
-                host = "localhost",
-                user = "root",
-                password = "root",
-                database = "mydatabase"
+                host = configValues['host'],
+                user = configValues['user'],
+                password = configValues['password'],
+                database = configValues['database']
             )
             mycursor = self.mydb.cursor()
             mycursor.execute("CREATE DATABASE IF NOT EXISTS mydatabase")
